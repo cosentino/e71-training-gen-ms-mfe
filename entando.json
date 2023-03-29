@@ -19,6 +19,9 @@
                 "en": "conference-table",
                 "it": "conference-table"
             },
+            "commands": {
+                "run": "npm install && PORT=3000 npm start"
+            },
             "apiClaims": [
                 {
                     "name": "conference-api",
@@ -38,6 +41,9 @@
                 "en": "conference-details",
                 "it": "conference-details"
             },
+            "commands": {
+                "run": "npm install && PORT=3001 npm start"
+            },
             "apiClaims": [
                 {
                     "name": "conference-api",
@@ -56,6 +62,9 @@
             "titles": {
                 "en": "conference-form",
                 "it": "conference-form"
+            },
+            "commands": {
+                "run": "npm install && PORT=3002 npm start"
             },
             "apiClaims": [
                 {
