@@ -3,12 +3,24 @@
         {
             "name": "conference-ms",
             "stack": "spring-boot",
-            "healthCheckPath":"/management/health",
-            "dbms":"postgresql"
-         
+            "healthCheckPath": "/management/health",
+            "dbms": "postgresql"
         }
     ],
-    "microfrontends": [],
+    "microfrontends": [
+        {
+            "name": "conference-table",
+            "customElement": "conference-table",
+            "stack": "react",
+            "type": "widget",
+            "group": "free",
+            "publicFolder": "public",
+            "titles": {
+                "en": "conference-table",
+                "it": "conference-table"
+            }
+        }
+    ],
     "svc": [],
     "name": "e72-training-gen-ms-mfe",
     "version": "0.0.1",
