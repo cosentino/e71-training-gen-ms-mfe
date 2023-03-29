@@ -37,7 +37,14 @@
             "titles": {
                 "en": "conference-details",
                 "it": "conference-details"
-            }
+            },
+            "apiClaims": [
+                {
+                    "name": "conference-api",
+                    "type": "internal",
+                    "serviceName": "conference-ms"
+                }
+            ]
         },
         {
             "name": "conference-form",
@@ -49,7 +56,14 @@
             "titles": {
                 "en": "conference-form",
                 "it": "conference-form"
-            }
+            },
+            "apiClaims": [
+                {
+                    "name": "conference-api",
+                    "type": "internal",
+                    "serviceName": "conference-ms"
+                }
+            ]
         }
     ],
     "svc": [],
