@@ -1,0 +1,12 @@
+{
+  "generator-jhipster-entando:7.0.1": {
+    "promptValues": {
+      "packageName": "com.m2cosentino.e71training"
+    }
+  },
+  "generator-jhipster:7.2.0": {
+    "promptValues": {
+      "nativeLanguage": "it"
+    }
+  }
+}
