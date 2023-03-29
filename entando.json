@@ -18,7 +18,14 @@
             "titles": {
                 "en": "conference-table",
                 "it": "conference-table"
-            }
+            },
+            "apiClaims": [
+                {
+                    "name": "conference-api",
+                    "type": "internal",
+                    "serviceName": "conference-ms"
+                }
+            ]
         }
     ],
     "svc": [],
