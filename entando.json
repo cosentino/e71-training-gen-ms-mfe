@@ -1,5 +1,11 @@
 {
-    "microservices": [],
+    "microservices": [
+        {
+            "name": "conference-ms",
+            "stack": "spring-boot",
+            "healthCheckPath": "/api/health"
+        }
+    ],
     "microfrontends": [],
     "svc": [],
     "name": "e72-training-gen-ms-mfe",
