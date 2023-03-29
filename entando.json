@@ -75,7 +75,9 @@
             ]
         }
     ],
-    "svc": [],
+    "svc": [
+        "keycloak"
+    ],
     "name": "e72-training-gen-ms-mfe",
     "version": "0.0.1",
     "description": "e72-training-gen-ms-mfe description",
