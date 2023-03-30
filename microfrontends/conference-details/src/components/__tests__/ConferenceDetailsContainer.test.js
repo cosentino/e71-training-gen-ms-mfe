@@ -10,8 +10,8 @@ import ConferenceDetailsContainer from 'components/ConferenceDetailsContainer';
 jest.mock('api/conference');
 
 jest.mock('auth/withKeycloak', () => {
-  const withKeycloak = (Component) => {
-    return (props) => (
+  const withKeycloak = Component => {
+    return props => (
       <Component
         {...props} // eslint-disable-line react/jsx-props-no-spreading
         keycloak={{
@@ -50,6 +50,7 @@ describe('ConferenceDetailsContainer component', () => {
       expect(getByText('entities.conference.id')).toBeInTheDocument();
       expect(getByText('entities.conference.name')).toBeInTheDocument();
       expect(getByText('entities.conference.location')).toBeInTheDocument();
+      expect(getByText('entities.conference.date')).toBeInTheDocument();
     });
   });
 

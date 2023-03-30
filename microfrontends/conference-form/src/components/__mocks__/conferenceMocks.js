@@ -1,17 +1,19 @@
 const conferenceMockEdit = {
-  id: 280,
+  id: 231,
   name:
-    'Sunt iusto accusantium ut aperiam blanditiis qui explicabo dolores quia. Consectetur explicabo sit voluptatem autem iusto magnam enim alias. Sint inventore nostrum et repellendus ex eaque. Veritatis deserunt recusandae autem voluptate non eaque nisi libero pariatur. Eveniet qui quibusdam exercitationem vel doloremque dolorum incidunt impedit non. Quo beatae quia velit iste.',
+    'Optio repellendus aut quo molestiae laborum quis nisi autem aspernatur. Quo et inventore quis molestias consequatur aut qui. Dolorem quaerat doloremque harum non soluta sed. Necessitatibus est explicabo earum modi corporis ut esse.',
   location:
-    'Dicta minima enim. Dolore est libero iste ut natus sit autem. Adipisci qui reprehenderit et earum reprehenderit libero iusto. Non aut similique quia. Aut asperiores sunt nisi ea.',
+    'Optio aut explicabo doloremque perspiciatis quo optio. Rerum optio error corrupti molestias non reprehenderit. Rerum aliquid et quo officia blanditiis soluta dolores. Tenetur pariatur ad.',
+  date: '2008-10-07T23:11:50+02:00',
 };
 
 const conferenceMockAdd = {
   id: '',
   name:
-    'Sunt iusto accusantium ut aperiam blanditiis qui explicabo dolores quia. Consectetur explicabo sit voluptatem autem iusto magnam enim alias. Sint inventore nostrum et repellendus ex eaque. Veritatis deserunt recusandae autem voluptate non eaque nisi libero pariatur. Eveniet qui quibusdam exercitationem vel doloremque dolorum incidunt impedit non. Quo beatae quia velit iste.',
+    'Optio repellendus aut quo molestiae laborum quis nisi autem aspernatur. Quo et inventore quis molestias consequatur aut qui. Dolorem quaerat doloremque harum non soluta sed. Necessitatibus est explicabo earum modi corporis ut esse.',
   location:
-    'Dicta minima enim. Dolore est libero iste ut natus sit autem. Adipisci qui reprehenderit et earum reprehenderit libero iusto. Non aut similique quia. Aut asperiores sunt nisi ea.',
+    'Optio aut explicabo doloremque perspiciatis quo optio. Rerum optio error corrupti molestias non reprehenderit. Rerum aliquid et quo officia blanditiis soluta dolores. Tenetur pariatur ad.',
+  date: '2008-10-07T23:11:50+02:00',
 };
 
 export { conferenceMockAdd, conferenceMockEdit };

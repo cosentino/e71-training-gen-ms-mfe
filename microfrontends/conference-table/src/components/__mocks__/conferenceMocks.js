@@ -1,17 +1,19 @@
 const conferenceMocks = [
   {
-    id: 280,
+    id: 231,
     name:
-      'Sunt iusto accusantium ut aperiam blanditiis qui explicabo dolores quia. Consectetur explicabo sit voluptatem autem iusto magnam enim alias. Sint inventore nostrum et repellendus ex eaque. Veritatis deserunt recusandae autem voluptate non eaque nisi libero pariatur. Eveniet qui quibusdam exercitationem vel doloremque dolorum incidunt impedit non. Quo beatae quia velit iste.',
+      'Optio repellendus aut quo molestiae laborum quis nisi autem aspernatur. Quo et inventore quis molestias consequatur aut qui. Dolorem quaerat doloremque harum non soluta sed. Necessitatibus est explicabo earum modi corporis ut esse.',
     location:
-      'Dicta minima enim. Dolore est libero iste ut natus sit autem. Adipisci qui reprehenderit et earum reprehenderit libero iusto. Non aut similique quia. Aut asperiores sunt nisi ea.',
+      'Optio aut explicabo doloremque perspiciatis quo optio. Rerum optio error corrupti molestias non reprehenderit. Rerum aliquid et quo officia blanditiis soluta dolores. Tenetur pariatur ad.',
+    date: '2008-10-07T23:11:50+02:00',
   },
   {
-    id: -79,
+    id: -212,
     name:
-      'Similique quas non voluptas et fuga. Ad expedita doloribus velit accusantium est cumque ex. Aut iusto quae odio quisquam rerum est. A dolor blanditiis quibusdam aliquam veniam atque. Autem culpa necessitatibus veniam magni est. Qui rerum neque odio et voluptas.',
+      'Nobis amet velit nisi libero soluta et quia temporibus. Rem sit maxime nemo numquam. Quae sed ipsum voluptate aliquid dolores commodi a. Pariatur tempore praesentium architecto velit cumque exercitationem nesciunt. Pariatur quisquam cumque repudiandae laudantium tempore natus omnis illo nesciunt.',
     location:
-      'Natus aut qui perferendis quo harum laborum. Vitae velit sit saepe nobis. Ut ipsam sit molestias voluptatem. Quia amet unde porro rem dolores sed quam perspiciatis. Accusamus ex sunt sint tempora est sed provident.',
+      'Minus qui in est voluptatibus in. Rerum qui quisquam dolores. Dolor earum similique dolorum et consequatur nam. Rem aut fugiat qui sit sint et. Nostrum et labore ab id minus sapiente dolorem.',
+    date: '2004-01-09T10:16:46+01:00',
   },
 ];
 

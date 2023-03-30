@@ -20,6 +20,9 @@ describe('Conference Form', () => {
     expect(getByTestId('conference-id').value).toBe(conferenceMock.id.toString());
     expect(getByLabelText('entities.conference.name').value).toBe(conferenceMock.name);
     expect(getByLabelText('entities.conference.location').value).toBe(conferenceMock.location);
+    expect(getByLabelText('entities.conference.date').value).toBe(
+      new Date(conferenceMock.date).toLocaleString(i18n.language)
+    );
   });
 
   it('submits form', async () => {

@@ -1,9 +1,9 @@
 {
-    "systemParams": {
-        "api": {
-            "conference-api": {
-                "url": "http://localhost:8081"
-            }
-        }
+  "systemParams": {
+    "api": {
+      "session-api": {
+        "url": "http://localhost:8081"
+      }
     }
+  }
 }

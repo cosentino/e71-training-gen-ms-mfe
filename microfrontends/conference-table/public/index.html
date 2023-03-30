@@ -16,7 +16,7 @@
     <title>Conference table</title>
     <script src="%REACT_APP_KEYCLOAK_URL%/js/keycloak.js"></script>
     <script>
-      const onLoad = (function () {
+      const onLoad = (function() {
         function createKcDispatcher(payload) {
           return () => window.dispatchEvent(new CustomEvent('keycloak', { detail: payload }));
         }
@@ -57,7 +57,7 @@
   </head>
   <body onLoad="onLoad();">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <conference-table pagination-mode="infinite-scroll" />
+    <conference-table />
     <script>
       function injectConfigIntoMfe() {
         fetch('%PUBLIC_URL%/mfe-config.json').then(async response => {

@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 
 import conferenceType from 'components/__types__/conference';
 
-const ConferenceFieldTable = ({ t, conference }) => (
+const ConferenceFieldTable = ({ t, i18n: { language }, conference }) => (
   <Table>
     <TableHead>
       <TableRow>
@@ -42,6 +42,14 @@ const ConferenceFieldTable = ({ t, conference }) => (
           <span>{conference.location}</span>
         </TableCell>
       </TableRow>
+      <TableRow>
+        <TableCell>
+          <span>{t('entities.conference.date')}</span>
+        </TableCell>
+        <TableCell>
+          <span>{conference.date && new Date(conference.date).toLocaleString(language)}</span>
+        </TableCell>
+      </TableRow>
     </TableBody>
   </Table>
 );
@@ -49,6 +57,9 @@ const ConferenceFieldTable = ({ t, conference }) => (
 ConferenceFieldTable.propTypes = {
   conference: conferenceType,
   t: PropTypes.func.isRequired,
+  i18n: PropTypes.shape({
+    language: PropTypes.string,
+  }).isRequired,
 };
 
 ConferenceFieldTable.defaultProps = {

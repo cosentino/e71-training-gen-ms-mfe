@@ -13,7 +13,8 @@
     "conference": {
       "id": "entities.conference.id",
       "name": "entities.conference.name",
-      "location": "entities.conference.location"
+      "location": "entities.conference.location",
+      "date": "entities.conference.date"
     }
   }
 }

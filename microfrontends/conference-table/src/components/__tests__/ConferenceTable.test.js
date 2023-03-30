@@ -17,6 +17,13 @@ describe('ConferenceTable', () => {
 
     expect(getByText(conferenceMocks[0].location)).toBeInTheDocument();
     expect(getByText(conferenceMocks[1].location)).toBeInTheDocument();
+
+    expect(
+      getByText(new Date(conferenceMocks[0].date).toLocaleString(i18n.language))
+    ).toBeInTheDocument();
+    expect(
+      getByText(new Date(conferenceMocks[1].date).toLocaleString(i18n.language))
+    ).toBeInTheDocument();
   });
 
   it('shows no conferences message', () => {
@@ -30,6 +37,13 @@ describe('ConferenceTable', () => {
 
     expect(queryByText(conferenceMocks[0].location)).not.toBeInTheDocument();
     expect(queryByText(conferenceMocks[1].location)).not.toBeInTheDocument();
+
+    expect(
+      queryByText(new Date(conferenceMocks[0].date).toLocaleString(i18n.language))
+    ).not.toBeInTheDocument();
+    expect(
+      queryByText(new Date(conferenceMocks[1].date).toLocaleString(i18n.language))
+    ).not.toBeInTheDocument();
 
     expect(queryByText('entities.conference.noItems')).toBeInTheDocument();
   });
