@@ -1,7 +1,12 @@
 package com.m2cosentino.e71training.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -21,11 +26,20 @@ public class Conference implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @NotNull
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "location")
     private String location;
+
+    @Column(name = "date")
+    private ZonedDateTime date;
+
+    @OneToMany(mappedBy = "conference")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "conference" }, allowSetters = true)
+    private Set<Session> sessions = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -68,6 +82,50 @@ public class Conference implements Serializable {
         this.location = location;
     }
 
+    public ZonedDateTime getDate() {
+        return this.date;
+    }
+
+    public Conference date(ZonedDateTime date) {
+        this.setDate(date);
+        return this;
+    }
+
+    public void setDate(ZonedDateTime date) {
+        this.date = date;
+    }
+
+    public Set<Session> getSessions() {
+        return this.sessions;
+    }
+
+    public void setSessions(Set<Session> sessions) {
+        if (this.sessions != null) {
+            this.sessions.forEach(i -> i.setConference(null));
+        }
+        if (sessions != null) {
+            sessions.forEach(i -> i.setConference(this));
+        }
+        this.sessions = sessions;
+    }
+
+    public Conference sessions(Set<Session> sessions) {
+        this.setSessions(sessions);
+        return this;
+    }
+
+    public Conference addSession(Session session) {
+        this.sessions.add(session);
+        session.setConference(this);
+        return this;
+    }
+
+    public Conference removeSession(Session session) {
+        this.sessions.remove(session);
+        session.setConference(null);
+        return this;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -94,6 +152,7 @@ public class Conference implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", location='" + getLocation() + "'" +
+            ", date='" + getDate() + "'" +
             "}";
     }
 }

@@ -5,17 +5,35 @@
   "fields": [
     {
       "fieldName": "name",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "location",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "ZonedDateTime"
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "session",
+      "otherEntityRelationshipName": "conference",
+      "relationshipName": "session"
+    }
+  ],
   "service": "no",
   "readOnly": false,
-  "pagination": "infinite-scroll",
+  "pagination": "no",
   "name": "Conference",
-  "changelogDate": "20230329150925"
+  "changelogDate": "20230329150925",
+  "entityTableName": "conference",
+  "dto": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "embedded": false,
+  "applications": "*"
 }

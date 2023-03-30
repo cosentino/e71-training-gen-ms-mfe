@@ -1,0 +1,47 @@
+application {
+  config {
+    applicationType microservice
+    authenticationType oauth2
+    baseName jhipster
+    blueprints [generator-jhipster-entando]
+    buildTool maven
+    cacheProvider caffeine
+    clientPackageManager npm
+    creationTimestamp 1680101474152
+    databaseType sql
+    devDatabaseType h2Disk
+    dtoSuffix DTO
+    enableGradleEnterprise false
+    enableHibernateCache true
+    enableSwaggerCodegen false
+    enableTranslation true
+    gradleEnterpriseHost ""
+    jhiPrefix jhi
+    jhipsterVersion "7.2.0"
+    jwtSecretKey "NDA0NjBhMTc0OGM5NGNlZWU5MmEwYTk1YTQyYTQ2MDA3MTViZDg5YjlmODJlOWYwNjllNTFiNmQyZjc0OTczNjVlOTBjNDBiODExYmU4NWIwNTAwMWEwMjMxMzM1OThhODY4NzljMzI2ZDU4Zjc2NmJmODAxY2Y2ZTQ2MDc5ZWY="
+    languages [it, en]
+    messageBroker false
+    nativeLanguage it
+    otherModules [generator-jhipster-entando]
+    packageName com.m2cosentino.e71training
+    prodDatabaseType postgresql
+    reactive false
+    searchEngine false
+    serverPort 8081
+    serviceDiscoveryType eureka
+    skipClient true
+    skipUserManagement true
+    testFrameworks [cypress]
+    websocket false
+  }
+
+  entities Conference
+}
+
+entity Conference {
+  name String
+  location String
+}
+paginate Conference with infinite-scroll
+microservice Conference with jhipster
+clientRootFolder Conference with jhipster

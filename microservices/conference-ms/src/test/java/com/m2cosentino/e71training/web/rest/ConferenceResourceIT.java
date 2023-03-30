@@ -1,5 +1,6 @@
 package com.m2cosentino.e71training.web.rest;
 
+import static com.m2cosentino.e71training.web.rest.TestUtil.sameInstant;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -9,6 +10,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.m2cosentino.e71training.IntegrationTest;
 import com.m2cosentino.e71training.domain.Conference;
 import com.m2cosentino.e71training.repository.ConferenceRepository;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -36,6 +41,9 @@ class ConferenceResourceIT {
     private static final String DEFAULT_LOCATION = "AAAAAAAAAA";
     private static final String UPDATED_LOCATION = "BBBBBBBBBB";
 
+    private static final ZonedDateTime DEFAULT_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+
     private static final String ENTITY_API_URL = "/api/conferences";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -60,7 +68,7 @@ class ConferenceResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Conference createEntity(EntityManager em) {
-        Conference conference = new Conference().name(DEFAULT_NAME).location(DEFAULT_LOCATION);
+        Conference conference = new Conference().name(DEFAULT_NAME).location(DEFAULT_LOCATION).date(DEFAULT_DATE);
         return conference;
     }
 
@@ -71,7 +79,7 @@ class ConferenceResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Conference createUpdatedEntity(EntityManager em) {
-        Conference conference = new Conference().name(UPDATED_NAME).location(UPDATED_LOCATION);
+        Conference conference = new Conference().name(UPDATED_NAME).location(UPDATED_LOCATION).date(UPDATED_DATE);
         return conference;
     }
 
@@ -100,6 +108,7 @@ class ConferenceResourceIT {
         Conference testConference = conferenceList.get(conferenceList.size() - 1);
         assertThat(testConference.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testConference.getLocation()).isEqualTo(DEFAULT_LOCATION);
+        assertThat(testConference.getDate()).isEqualTo(DEFAULT_DATE);
     }
 
     @Test
@@ -127,6 +136,28 @@ class ConferenceResourceIT {
 
     @Test
     @Transactional
+    void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = conferenceRepository.findAll().size();
+        // set the field null
+        conference.setName(null);
+
+        // Create the Conference, which fails.
+
+        restConferenceMockMvc
+            .perform(
+                post(ENTITY_API_URL)
+                    .with(csrf())
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(TestUtil.convertObjectToJsonBytes(conference))
+            )
+            .andExpect(status().isBadRequest());
+
+        List<Conference> conferenceList = conferenceRepository.findAll();
+        assertThat(conferenceList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     void getAllConferences() throws Exception {
         // Initialize the database
         conferenceRepository.saveAndFlush(conference);
@@ -138,7 +169,8 @@ class ConferenceResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(conference.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].location").value(hasItem(DEFAULT_LOCATION)));
+            .andExpect(jsonPath("$.[*].location").value(hasItem(DEFAULT_LOCATION)))
+            .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))));
     }
 
     @Test
@@ -154,7 +186,8 @@ class ConferenceResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(conference.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
-            .andExpect(jsonPath("$.location").value(DEFAULT_LOCATION));
+            .andExpect(jsonPath("$.location").value(DEFAULT_LOCATION))
+            .andExpect(jsonPath("$.date").value(sameInstant(DEFAULT_DATE)));
     }
 
     @Test
@@ -176,7 +209,7 @@ class ConferenceResourceIT {
         Conference updatedConference = conferenceRepository.findById(conference.getId()).get();
         // Disconnect from session so that the updates on updatedConference are not directly saved in db
         em.detach(updatedConference);
-        updatedConference.name(UPDATED_NAME).location(UPDATED_LOCATION);
+        updatedConference.name(UPDATED_NAME).location(UPDATED_LOCATION).date(UPDATED_DATE);
 
         restConferenceMockMvc
             .perform(
@@ -193,6 +226,7 @@ class ConferenceResourceIT {
         Conference testConference = conferenceList.get(conferenceList.size() - 1);
         assertThat(testConference.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testConference.getLocation()).isEqualTo(UPDATED_LOCATION);
+        assertThat(testConference.getDate()).isEqualTo(UPDATED_DATE);
     }
 
     @Test
@@ -285,6 +319,7 @@ class ConferenceResourceIT {
         Conference testConference = conferenceList.get(conferenceList.size() - 1);
         assertThat(testConference.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testConference.getLocation()).isEqualTo(DEFAULT_LOCATION);
+        assertThat(testConference.getDate()).isEqualTo(DEFAULT_DATE);
     }
 
     @Test
@@ -299,7 +334,7 @@ class ConferenceResourceIT {
         Conference partialUpdatedConference = new Conference();
         partialUpdatedConference.setId(conference.getId());
 
-        partialUpdatedConference.name(UPDATED_NAME).location(UPDATED_LOCATION);
+        partialUpdatedConference.name(UPDATED_NAME).location(UPDATED_LOCATION).date(UPDATED_DATE);
 
         restConferenceMockMvc
             .perform(
@@ -316,6 +351,7 @@ class ConferenceResourceIT {
         Conference testConference = conferenceList.get(conferenceList.size() - 1);
         assertThat(testConference.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testConference.getLocation()).isEqualTo(UPDATED_LOCATION);
+        assertThat(testConference.getDate()).isEqualTo(UPDATED_DATE);
     }
 
     @Test

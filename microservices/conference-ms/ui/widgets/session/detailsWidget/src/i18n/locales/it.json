@@ -1,0 +1,20 @@
+{
+  "error": {
+    "dataLoading": "Errore durante la connessione al server"
+  },
+  "common": {
+    "widgetName": "Dettagli a proposito di '{{widgetNamePlaceholder}}'",
+    "name": "Nome",
+    "value": "Valore",
+    "loading": "Caricamento in corso...",
+    "notAuthenticated": "L'utente non è autenticato."
+  },
+  "entities": {
+    "session": {
+      "id": "ID",
+      "id": "entità.session.id",
+      "name": "entità.session.name",
+      "track": "entità.session.track"
+    }
+  }
+}

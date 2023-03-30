@@ -52,8 +52,8 @@
     "jwtSecretKey": "NDA0NjBhMTc0OGM5NGNlZWU5MmEwYTk1YTQyYTQ2MDA3MTViZDg5YjlmODJlOWYwNjllNTFiNmQyZjc0OTczNjVlOTBjNDBiODExYmU4NWIwNTAwMWEwMjMxMzM1OThhODY4NzljMzI2ZDU4Zjc2NmJmODAxY2Y2ZTQ2MDc5ZWY=",
     "languages": ["it", "en"],
     "enableGradleEnterprise": false,
-    "lastLiquibaseTimestamp": 1680102565000,
-    "entities": ["Conference"],
+    "lastLiquibaseTimestamp": 1680165111000,
+    "entities": ["Conference", "Session"],
     "generateMfeForEntity": true
   }
 }

@@ -43,6 +43,8 @@ public class CacheConfiguration {
         return cm -> {
             createCache(cm, "oAuth2Authentication");
             createCache(cm, com.m2cosentino.e71training.domain.Conference.class.getName());
+            createCache(cm, com.m2cosentino.e71training.domain.Conference.class.getName() + ".sessions");
+            createCache(cm, com.m2cosentino.e71training.domain.Session.class.getName());
             // jhipster-needle-caffeine-add-entry
         };
     }
